@@ -1,0 +1,3 @@
+Acionar o Ambiente: Jogo\Scripts\Activate.ps1
+
+Sair do Ambiente: deactivate
