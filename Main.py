@@ -1,5 +1,6 @@
 import pygame
 import sys
+<<<<<<< Updated upstream
 
 # Classe para representar o chão
 class Chao:
@@ -52,6 +53,14 @@ tela = pygame.display.set_mode((largura, altura))
 # Definir as cores
 preto = (0, 0, 0)
 branco = (255, 255, 255)
+=======
+from Cena1 import Chao, Personagem, tela, Cores, largura
+
+# Definir as cores
+preto = preto = (0, 0, 0)
+branco = branco = (255, 255, 255)
+vermelho = vermelho = (255, 0, 0)
+>>>>>>> Stashed changes
 
 # Criar instâncias do chão e do personagem
 chao = Chao(0, 500, largura, 20, branco)
@@ -73,7 +82,7 @@ while True:
         if evento.type == pygame.KEYDOWN:
             if evento.key == pygame.K_w:
                 personagem.pular()
-    
+
     # Capturar as teclas pressionadas
     teclas = pygame.key.get_pressed()
 
