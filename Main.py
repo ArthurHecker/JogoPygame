@@ -1,70 +1,15 @@
 import pygame
 import sys
-<<<<<<< Updated upstream
-
-# Classe para representar o chão
-class Chao:
-    def __init__(self, x, y, largura, altura, cor):
-        self.rect = pygame.Rect(x, y, largura, altura)
-        self.cor = cor
-
-    def desenhar(self, tela):
-        pygame.draw.rect(tela, self.cor, self.rect)
-
-# Classe para representar o personagem
-class Personagem:
-    def __init__(self, x, y, largura, altura, cor):
-        self.rect = pygame.Rect(x, y, largura, altura)
-        self.cor = cor
-        self.velocidade = 1
-        self.gravidade = 0.01
-        self.velocidade_vertical = 0
-        self.altura_do_salto = 0
-        self.pulando = False
-
-    def mover(self, teclas):
-        if teclas[pygame.K_a]:
-            self.rect.x -= self.velocidade
-        if teclas[pygame.K_d]:
-            self.rect.x += self.velocidade
-
-    def aplicar_gravidade(self):
-        self.velocidade_vertical += self.gravidade
-        self.rect.y += self.velocidade_vertical
-
-    def pular(self):
-        if not self.pulando:
-            self.pulando = True
-            self.velocidade_vertical = -self.altura_do_salto
-
-    def colisao_chao(self, chao):
-        if self.rect.colliderect(chao.rect):
-            self.rect.y = chao.rect.y - self.rect.height
-            self.velocidade_vertical = 0
-            self.pulando = False
-
-# Inicialização do Pygame
-pygame.init()
-
-# Definir as dimensões da tela
-largura, altura = 800, 600
-tela = pygame.display.set_mode((largura, altura))
-
-# Definir as cores
-preto = (0, 0, 0)
-branco = (255, 255, 255)
-=======
 from Cena1 import Chao, Personagem, tela, Cores, largura
 
 # Definir as cores
 preto = preto = (0, 0, 0)
 branco = branco = (255, 255, 255)
 vermelho = vermelho = (255, 0, 0)
->>>>>>> Stashed changes
 
 # Criar instâncias do chão e do personagem
 chao = Chao(0, 500, largura, 20, branco)
-personagem = Personagem(100, chao.rect.y - 50, 50, 50, branco)
+personagem = Personagem(100, chao.rect.y - 50, 50, 50, vermelho)
 
 # Defina essas variáveis antes do loop principal do jogo:
 velocidade_vertical = 0.0  # Inicialize com zero
