@@ -8,7 +8,7 @@ class Cores:
         self.vermelho = vermelho = (255, 0, 0)
 
 # Defina a tela (se for uma janela de jogo, defina aqui)
-largura, altura = 800, 400
+largura, altura = 1600, 900
 tela = pygame.display.set_mode((largura, altura))
 
 # Classe para representar o chão
