@@ -9,24 +9,26 @@ class Personagem:
         self.aceleracao = [0,0]
         self.gravidade = 0.1
         self.pulando = False
+        self.impulso = [4,5]
 
     def input(self, comando):
         if comando.type == pygame.KEYDOWN:
             if comando.key == pygame.K_LEFT or comando.key == pygame.K_a:
-                self.velocidade[0] += -1
+                self.aceleracao[0] += -self.impulso[0]
             if comando.key == pygame.K_RIGHT or comando.key == pygame.K_d:
-                self.velocidade[0] += 1
+                self.aceleracao[0] += self.impulso[0]
             if comando.key == pygame.K_UP or comando.key == pygame.K_w:
                 if not self.pulando:
-                    self.aceleracao[1] = -4.4
+                    self.aceleracao[1] = -self.impulso[1]
                     self.pulando = True
+                    
             if comando.key == pygame.K_DOWN or comando.key == pygame.K_s:
                 pass
         if comando.type == pygame.KEYUP:
             if comando.key == pygame.K_LEFT or comando.key == pygame.K_a:
-                self.velocidade[0] += 1
+                self.aceleracao[0] += self.impulso[0]
             if comando.key == pygame.K_RIGHT or comando.key == pygame.K_d:
-                self.velocidade[0] += -1
+                self.aceleracao[0] += -self.impulso[0]
             if comando.key == pygame.K_UP or comando.key == pygame.K_w:
                 pass
             if comando.key == pygame.K_DOWN or comando.key == pygame.K_s:
