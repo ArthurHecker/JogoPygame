@@ -8,28 +8,28 @@ class Personagem:
         self.velocidade = [0,0]
         self.aceleracao = [0,0]
         self.gravidade = 0.1
-        self.numeroDePulosFeitos = 0
+        self.numeroDePulosFeitos = 2
         self.impulso = [4,5]
         self.numeroDePulosMaximos = 2
 
     def input(self, comando):
         if comando.type == pygame.KEYDOWN:
             if comando.key == pygame.K_LEFT or comando.key == pygame.K_a:
-                self.aceleracao[0] += -self.impulso[0]
+                self.velocidade[0] += -self.impulso[0]
             if comando.key == pygame.K_RIGHT or comando.key == pygame.K_d:
-                self.aceleracao[0] += self.impulso[0]
+                self.velocidade[0] += self.impulso[0]
             if comando.key == pygame.K_UP or comando.key == pygame.K_w:
                 if self.numeroDePulosFeitos < self.numeroDePulosMaximos:
-                    self.aceleracao[1] = -self.impulso[1]
+                    self.velocidade[1] = -self.impulso[1]
                     self.numeroDePulosFeitos += 1
 
             if comando.key == pygame.K_DOWN or comando.key == pygame.K_s:
                 pass
         if comando.type == pygame.KEYUP:
             if comando.key == pygame.K_LEFT or comando.key == pygame.K_a:
-                self.aceleracao[0] += self.impulso[0]
+                self.velocidade[0] += self.impulso[0]
             if comando.key == pygame.K_RIGHT or comando.key == pygame.K_d:
-                self.aceleracao[0] += -self.impulso[0]
+                self.velocidade[0] += -self.impulso[0]
             if comando.key == pygame.K_UP or comando.key == pygame.K_w:
                 pass
             if comando.key == pygame.K_DOWN or comando.key == pygame.K_s:
@@ -38,7 +38,8 @@ class Personagem:
 
     def colisao(self, chao):
         if chao.rect.colliderect(self.rect):
-            self.rect.y = chao.rect.y - self.rect.height
+            self.rect.y += -self.velocidade[1]
+            self.rect.x += -self.velocidade[0]
             self.velocidade[1] = 0
             self.numeroDePulosFeitos = 0
     
