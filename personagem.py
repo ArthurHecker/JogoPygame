@@ -8,8 +8,9 @@ class Personagem:
         self.velocidade = [0,0]
         self.aceleracao = [0,0]
         self.gravidade = 0.1
-        self.pulando = False
+        self.numeroDePulosFeitos = 0
         self.impulso = [4,5]
+        self.numeroDePulosMaximos = 2
 
     def input(self, comando):
         if comando.type == pygame.KEYDOWN:
@@ -18,10 +19,10 @@ class Personagem:
             if comando.key == pygame.K_RIGHT or comando.key == pygame.K_d:
                 self.aceleracao[0] += self.impulso[0]
             if comando.key == pygame.K_UP or comando.key == pygame.K_w:
-                if not self.pulando:
+                if self.numeroDePulosFeitos < self.numeroDePulosMaximos:
                     self.aceleracao[1] = -self.impulso[1]
-                    self.pulando = True
-                    
+                    self.numeroDePulosFeitos += 1
+
             if comando.key == pygame.K_DOWN or comando.key == pygame.K_s:
                 pass
         if comando.type == pygame.KEYUP:
@@ -39,7 +40,7 @@ class Personagem:
         if chao.rect.colliderect(self.rect):
             self.rect.y = chao.rect.y - self.rect.height
             self.velocidade[1] = 0
-            self.pulando = False
+            self.numeroDePulosFeitos = 0
     
     def render(self, screen):
         pygame.draw.rect(screen, self.cor, self.rect)
