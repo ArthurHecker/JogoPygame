@@ -7,7 +7,7 @@ class Personagem:
         self.cor = cor
         self.velocidade = [0,0]
         self.aceleracao = [0,0]
-        self.gravidade = 0.01
+        self.gravidade = 0.1
         self.pulando = False
 
     def input(self, comando):
@@ -18,7 +18,7 @@ class Personagem:
                 self.velocidade[0] += 1
             if comando.key == pygame.K_UP or comando.key == pygame.K_w:
                 if not self.pulando:
-                    self.aceleracao[1] = -1
+                    self.aceleracao[1] = -4.4
                     self.pulando = True
             if comando.key == pygame.K_DOWN or comando.key == pygame.K_s:
                 pass
