@@ -1,6 +1,6 @@
 import pygame
 from personagem import Personagem
-from chao import Chao
+from caixa import Caixa
 
 class Cena1():
     def __init__(self, screen) -> None:
@@ -18,13 +18,15 @@ class Cena1():
         for objeto in self.objetos:
             if isinstance(objeto, Personagem):
                 for objeto2 in self.objetos:
-                    if isinstance(objeto2, Chao):
+                    if isinstance(objeto2, Caixa):
                         objeto.colisao(objeto2)
 
-    def render(self, screen):
+
+    def render(self, tela):
         for objeto in self.objetos:
-            objeto.render(screen)
+            objeto.render(tela)
 
     def spawn(self):
         self.objetos.append(Personagem(100, 0))
-        self.objetos.append(Chao(0, 500, self.screen.get_width()))
+        self.objetos.append(Caixa(150, 500, self.screen.get_width()/2,200, jogador=self.objetos[0]))
+        self.objetos.append(Caixa(360, 10, 20, self.screen.get_height(), jogador=self.objetos[0]))

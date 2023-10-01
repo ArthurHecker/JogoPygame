@@ -86,6 +86,8 @@ class Main():
         # Preencher a tela com a cor preta
         self.screen.fill(preto)
         self.cenas[self.cenaAtual].render(self.screen)
+        #rederiza a posicao do mouse no canto da tela
+        self.screen.blit(pygame.font.SysFont("Arial", 15).render(str(pygame.mouse.get_pos()), True, branco), (0,0))
         pygame.display.flip()
 
 
